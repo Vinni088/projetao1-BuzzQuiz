@@ -1,0 +1,16 @@
+header{
+    height: 69px;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    background-color: #EC362D;
+}
+
+header p{
+    font-family: Roboto;
+    font-size: 37px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
