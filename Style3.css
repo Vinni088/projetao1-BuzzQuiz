@@ -1,0 +1,103 @@
+/* Tela criação quizz */
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background-color: #E5E5E5;
+}
+
+.escondido {
+  display: none;  
+}
+.corpo-inteiro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cabecalho {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 43px;
+    
+    color: #FFFFFF;
+    background: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 69px;
+    width: 100%;
+}
+.instrucoes-criacao {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    background-color: #E5E5E5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89px;
+    width: 100%;
+}
+.container-inputs {
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+.container-inputs > input {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin: 4px 0;
+    
+    display: flex;
+    align-items: center;
+    height: 46px;
+
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+}
+.botao-avancar {
+    height: 54px;
+    background-color:#EC362D;
+    border-radius: 15px;
+    margin-top: 30px;
+    width: 367px;
+    
+    box-shadow: none;
+    border: none;
+}
+.botao-avancar > p {
+    color:#FFF5F4;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+@media (max-width: 1100px) {
+    .campo-texto {
+        width: 100%;
+    }
+    .botao-avancar {
+        width:324px;
+    }
+}
