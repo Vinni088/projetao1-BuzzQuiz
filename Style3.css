@@ -1,52 +1,5 @@
 /* Tela criação quizz */
-* {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-body {
-    background-color: #E5E5E5;
-}
-
-.escondido {
-  display: none;  
-}
-.corpo-inteiro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.cabecalho {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 37px;
-    line-height: 43px;
-    
-    color: #FFFFFF;
-    background: #EC362D;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 69px;
-    width: 100%;
-}
-.instrucoes-criacao {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-
-    background-color: #E5E5E5;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 89px;
-    width: 100%;
-}
+/* Criar quizz: Infos Básicas */
 .container-inputs {
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -74,15 +27,156 @@ body {
     line-height: 22px;
     color: #BABABA;
 }
+
+
+
+/* criar quiz: definir perguntas */
+.container-perguntas {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+}
+.box-pergunta {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+}
+.pergunta-visivel {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    
+    width: 600px; 
+    padding: 17px 15px;
+}
+.box-inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 7px 0;
+}
+.box-inputs > input {
+    height: 46px;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    margin: 7px 0;
+    padding: 0 14px;
+
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+
+    color: #BABABA;
+}
+.box-inputs > p {
+    margin: 14px 0;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+.pergunta-colapsada {
+    width: 600px;
+    height: 74px;
+
+    margin: 12px 0;
+    padding: 0 17px;
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pergunta-colapsada > p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+.pergunta-colapsada > ion-icon {
+    height: 23px;
+    width: 26px;
+
+    color: #000000;
+}
+.pergunta-colapsada > ion-icon:hover {
+    cursor: pointer;
+}
+
+
+/* Configs Gerais */
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #E5E5E5;
+}
+.corpo-inteiro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+.instrucoes-criacao {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    background-color: #E5E5E5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 89px;
+    width: 100%;
+}
+.cabecalho {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 43px;
+    
+    color: #FFFFFF;
+    background: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 69px;
+    width: 100%;
+}
 .botao-avancar {
     height: 54px;
-    background-color:#EC362D;
-    border-radius: 15px;
-    margin-top: 30px;
     width: 367px;
     
-    box-shadow: none;
     border: none;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+    box-shadow: none;
+    background-color:#EC362D;
 }
 .botao-avancar > p {
     color:#FFF5F4;
@@ -92,12 +186,32 @@ body {
     font-size: 18px;
     line-height: 21px;
 }
+.botao-avancar:hover {
+    cursor: pointer;
+}
 
+/* Mobile Config */
 @media (max-width: 1100px) {
-    .campo-texto {
-        width: 100%;
-    }
     .botao-avancar {
         width:324px;
     }
+    .container-inputs {
+        width: 100%;
+    }
+    .pergunta-visivel {
+        width: 100%;
+    }
+    .pergunta-colapsada {
+        width: 100%;
+    }
 }
+/* Informação inválida */
+.info-invalida {
+    border: 2px solid red;
+}
+
+/* Classe Display: none */
+.escondido {
+    display: none; 
+}
+
