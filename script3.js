@@ -44,8 +44,8 @@ function checarInfo() {
         alert('Por favor, preencha as informações pedidas corretamente');
     } else {
         mock.title = tituloQuizz
-        console.log(mock)
-        definirPerguntas()
+        mock.image = imagemQuizz
+        definirNiveis()
     }   
 }
 
@@ -214,10 +214,47 @@ function checarPerguntas() {
     let respErradasForamInseridas = respostasErradas1.length == respErradasInseridas.length;
 
     if(perguntasForamInseridas == true && coresForamInseridas == true && imagensRCForamInseridas == true && imagensREForamInseridas == true && respCorretasForamInseridas == true && respErradasForamInseridas == true) {
-        //FunçãoProsseguirParaNíveis()
-        console.log('foi!');
+        definirNiveis();
     }
 }
+
+//criar quizz: níveis
+const niveisCorpo = [
+    `<div class="cabecalho">BuzzQuizz</div>
+    <div class="instrucoes-criacao">Agora, decida os níveis!</div>
+    <div class="container-niveis"></div>   
+    <button onclick="" class="botao-avancar"><p>Finalizar Quizz</p></button>`    
+]
+
+function definirNiveis() {
+    corpoInteiro.innerHTML = niveisCorpo;
+    let containerNiveis = document.querySelector('.container-niveis');
+    console.log(numNiveis);
+    for (let i = 0; i < numNiveis; i++) {
+        const niveisBase = [
+            `<div class="nivel${i+1} box-nivel">
+                <div class="nivel${i+1} nivel-visivel escondido">
+                    <div class="box-inputs">
+                        <p>Nível ${i+1}</p>
+                        <input class="nivel${i+1}" type="text" placeholder="Título do nível">
+                        <input class="nivel${i+1}" type="text" placeholder="% de acerto mínima">
+                        <input class="nivel${i+1}" type="text" placeholder="URL da imagem do nível">
+                        <textarea name="descricaoNivel" class="nivel${i+1} descricao-nivel" placeholder="Descrição do nível"></textarea>
+                    </div>   
+                </div>
+                <div class="nivel${i+1} nivel-colapsado">
+                    <p>Nível ${i+1}</p>
+                    <ion-icon class="nivel${i+1} botao-editar" onclick="" name="create-outline"></ion-icon>
+                </div>
+            </div>`
+        ]
+        containerNiveis.innerHTML += niveisBase;
+    }
+
+    
+}
+
+
 
 const mock = {
     title: '',
@@ -255,6 +292,3 @@ const mock = {
 		}
     ]
 }
-
-
-console.log(mock)
