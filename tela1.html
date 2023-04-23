@@ -11,23 +11,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@100;300;400;500;700;900&display=swap" >
     <link rel="stylesheet" href="Reset.css">
     <link rel="stylesheet" href="Style1.css">
+    <link rel="stylesheet" href="Style3.css">
 </head>
 <body>
     <div class="Tela1">
         <div class="cabecalho_tela1">
             <p class="Texto_Cabecalho_tela1">BuzzQuiz</p>
         </div>
-        <div class="corpo_tela1">
+        <div class="corpo-inteiro">
             <div class="seus_quizzes">
                 <p class="Sem_quizzes">Você não criou nenhum quizz ainda :(</p>
-                <button class="botao_criar_quizz">Criar Quizz</button>
+                <button onclick="criarQuizz()" class="botao_criar_quizz"> Criar Quizz </button>
             </div>
             <div class="todos_os_quizzes">
                 <h1>Todos os Quizzes</h1>
-                <div class="Quiz_individual">
-                    <img  class="Img_quiz" src="" alt="">
-                </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -36,5 +34,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="script1.js"></script>
+    <script src="script3.js"></script>
 </body>
 </html>
