@@ -25,3 +25,17 @@ function coletar_quizzes() {
     promisse_quizzes.then(analise_quizzes);
 }
 coletar_quizzes();
+
+function tela_inicial() {
+    const corpo = document.querySelector(".corpo-inteiro");
+    corpo.innerHTML = `
+        <div class="seus_quizzes">
+            <p class="Sem_quizzes">Você não criou nenhum quizz ainda :(</p>
+            <button onclick="criarQuizz()" class="botao_criar_quizz"> Criar Quizz </button>
+        </div>
+        <div class="todos_os_quizzes">
+            <h1>Todos os Quizzes</h1> 
+        </div>
+    `;
+    povoar_quizzes();
+}

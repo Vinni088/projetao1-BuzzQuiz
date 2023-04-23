@@ -7,7 +7,8 @@ let numNiveis = 0;
 let corpoInteiro = document.querySelector('.corpo-inteiro');
 
 const infoBasica = [
-    `<div class="cabecalho">BuzzQuizz</div>
+    `
+    <div class="voltar-a-tela1" onclick="tela_inicial()"><ion-icon class="icone-voltar" name="arrow-back-circle"></ion-icon></div>
     <div class="instrucoes-criacao">Comece pelo começo</div>
     <div class="container-inputs infos-basicas">
         <input class="titulo-quizz" type="text" placeholder="Título do seu quizz">
