@@ -8,6 +8,7 @@
     position: fixed;
     top: 0px;
     left: 0px;
+    z-index: 3;
 
     width: 100%;
     height: 69px;
@@ -33,9 +34,9 @@
 }
 
 .corpo_tela1 {
-    margin-top: 100px;
-    padding-left: 13.5%;
-    padding-right: 13.5%;
+    padding-top: 100px;
+    padding-left: 194px;
+    padding-right: 194px;
 
     display: flex;
     flex-direction: column;
@@ -45,7 +46,7 @@
 }
 .seus_quizzes {
 
-    width: 100%;
+    width: 1051px;
     min-height: 181px;
     
     background: #FAFAFA;
@@ -98,12 +99,13 @@
 
 .todos_os_quizzes {
     margin-top: 25px;
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
+    row-gap: 15px;
+    column-gap: 12px;
 }
 .todos_os_quizzes h1 {
     width: 185px;
@@ -128,8 +130,27 @@
     height: 181px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
+    position: relative;
 }
 .Img_quiz {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
+}
+.Titulo_quiz_individual {
+    position: absolute;
+    width: 301px;
+    height: 54px;
+    left: 18px;
+    bottom: 7px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    
+    color: #FFFFFF;
 }
