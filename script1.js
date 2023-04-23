@@ -11,7 +11,7 @@ function povoar_quizzes() {
         <div onclick="Play_quizz(${quizzes[i].id})" class="Quiz_individual">
             <img  class="Img_quiz" src=${quizzes[i].image} alt="">
             <div class="Titulo_quiz_individual">${quizzes[i].title}</div>
-
+            <div class="cover"></div>
         `;
         localização.innerHTML += div_adicional;
     }
