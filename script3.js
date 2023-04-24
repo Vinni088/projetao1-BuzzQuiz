@@ -319,7 +319,7 @@ function puxarRespostasIncorretas(checagemPerguntas) {
             objetoQuizz.questions[i].answers[2].image = imgRErrada;
         }
     }
-    imagensRErradas3
+    
     for (i = 0; i < respostasErradas3.length; i++) {
         let respIncorreta = respostasErradas3[i].value;
         let imgRErrada = imagensRErradas3[i].value;

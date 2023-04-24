@@ -8,7 +8,7 @@ function povoar_quizzes() {
     const localização = document.querySelector(".todos_os_quizzes");
     for (let i = 0; i < quizzes.length; i++) {
         let div_adicional = `
-        <div onclick="Play_quizz(${quizzes[i].id})" class="Quiz_individual">
+        <div data-test="others-quiz" onclick="Play_quizz(${quizzes[i].id})" class="Quiz_individual">
             <img  class="Img_quiz" src=${quizzes[i].image} alt="">
             <div class="Titulo_quiz_individual">${quizzes[i].title}</div>
             <div class="cover"></div>
@@ -31,7 +31,7 @@ function tela_inicial() {
     corpo.innerHTML = `
         <div class="seus_quizzes">
             <p class="Sem_quizzes">Você não criou nenhum quizz ainda :(</p>
-            <button onclick="criarQuizz()" class="botao_criar_quizz"> Criar Quizz </button>
+            <button class="create-btn" onclick="criarQuizz()" class="botao_criar_quizz"> Criar Quizz </button>
         </div>
         <div class="todos_os_quizzes">
             <h1>Todos os Quizzes</h1> 

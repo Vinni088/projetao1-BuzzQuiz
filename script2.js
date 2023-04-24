@@ -26,7 +26,7 @@ function Jogar_quizz(identificador) {
     corpo.innerHTML = "";
 
     corpo.innerHTML += `
-    <div class="titulo-quiz"> 
+    <div data-test="banner" class="titulo-quiz"> 
         <img src=${quizz_execução.image}> 
         <p> titulo do quiz </p>
     </div>`;
@@ -35,30 +35,30 @@ function Jogar_quizz(identificador) {
         let respostas = quizz_execução.questions[i].answers;
         respostas.sort(comparador);
         corpo.innerHTML +=`
-        <div class="pergunta-quiz">
-            <div class="titulo-pergunta">
+        <div data-test="question" class="pergunta-quiz">
+            <div data-test="question-title" class="titulo-pergunta">
                 ${quizz_execução.questions[i].title}
             </div>
 
         <div class="opcoes-quiz">
-          <div class="opcao-quiz">
+          <div data-test="answer" class="opcao-quiz">
             <img src="${respostas[0].image}" >
-            <span>${respostas[0].text}</span>
+            <span data-test="answer-text">${respostas[0].text}</span>
           </div>
 
-          <div class="opcao-quiz">
+          <div data-test="answer" class="opcao-quiz">
             <img src="${respostas[1].image}" >
-            <span>${respostas[1].text}</span>
+            <span data-test="answer-text">${respostas[1].text}</span>
           </div>
 
-          <div class="opcao-quiz">
+          <div data-test="answer" class="opcao-quiz">
             <img src="${respostas[2].image}" >
-            <span>${respostas[2].text}</span>
+            <span data-test="answer-text">${respostas[2].text}</span>
           </div>
 
-          <div class="opcao-quiz">
+          <div data-test="answer" class="opcao-quiz">
             <img src="${respostas[3].image}" >
-            <span>${respostas[3].text}</span>
+            <span data-test="answer-text">${respostas[3].text}</span>
           </div>
         </div>
       </div>`

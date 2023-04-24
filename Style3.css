@@ -205,6 +205,18 @@ body {
     background-color: #E5E5E5;
 
 }
+.quadrado-teste{
+    width:100px;
+    height: 100px;
+}
+.acinzentado {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    position: absolute;
+
+    background-color: lightgray;
+}
 .corpo-inteiro {
     display: flex;
     flex-direction: column;
