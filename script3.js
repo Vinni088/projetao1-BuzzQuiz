@@ -39,14 +39,14 @@ function checarInfo() {
         alert('Por favor, preencha as informações pedidas corretamente');
     } else if(httpsCheck != 'https://') {
         alert('Por favor, preencha as informações pedidas corretamente');
-    } else if (numPerguntas < 3 || numPerguntas == null) {
+    } else if (numPerguntas < 3 || numPerguntas == null || isNaN(numPerguntas) == true) {
         alert('Por favor, preencha as informações pedidas corretamente');
-    } else if (numNiveis < 2 || numNiveis == null) {
+    } else if (numNiveis < 2 || numNiveis == null || isNaN(numNiveis) == true) {
         alert('Por favor, preencha as informações pedidas corretamente');
     } else {
         mock.title = tituloQuizz
         mock.image = imagemQuizz
-        definirNiveis()
+        definirPerguntas();
     }   
 }
 
@@ -224,35 +224,117 @@ const niveisCorpo = [
     `<div class="cabecalho">BuzzQuizz</div>
     <div class="instrucoes-criacao">Agora, decida os níveis!</div>
     <div class="container-niveis"></div>   
-    <button onclick="" class="botao-avancar"><p>Finalizar Quizz</p></button>`    
+    <button onclick="checarNiveis()" class="botao-avancar"><p>Finalizar Quizz</p></button>`    
 ]
 
 function definirNiveis() {
     corpoInteiro.innerHTML = niveisCorpo;
     let containerNiveis = document.querySelector('.container-niveis');
-    console.log(numNiveis);
     for (let i = 0; i < numNiveis; i++) {
         const niveisBase = [
             `<div class="nivel${i+1} box-nivel">
                 <div class="nivel${i+1} nivel-visivel escondido">
                     <div class="box-inputs">
                         <p>Nível ${i+1}</p>
-                        <input class="nivel${i+1}" type="text" placeholder="Título do nível">
-                        <input class="nivel${i+1}" type="text" placeholder="% de acerto mínima">
-                        <input class="nivel${i+1}" type="text" placeholder="URL da imagem do nível">
+                        <input class="nivel${i+1} titulo-nivel" type="text" placeholder="Título do nível">
+                        <input class="nivel${i+1} acerto-minimo" type="text" placeholder="% de acerto mínima">
+                        <input class="nivel${i+1} url-imagem-nivel" type="text" placeholder="URL da imagem do nível">
                         <textarea name="descricaoNivel" class="nivel${i+1} descricao-nivel" placeholder="Descrição do nível"></textarea>
                     </div>   
                 </div>
                 <div class="nivel${i+1} nivel-colapsado">
                     <p>Nível ${i+1}</p>
-                    <ion-icon class="nivel${i+1} botao-editar" onclick="" name="create-outline"></ion-icon>
+                    <ion-icon class="nivel${i+1} botao-editar" onclick="mostrarNivel(this.parentNode)" name="create-outline"></ion-icon>
                 </div>
             </div>`
         ]
         containerNiveis.innerHTML += niveisBase;
     }
 
+    let nivelVisivel1 = document.querySelector('.nivel1 .nivel-visivel');
+    nivelVisivel1.classList.remove('escondido');
     
+    let nivelColapsado1 = document.querySelector('.nivel1 .nivel-colapsado');
+    nivelColapsado1.classList.add('escondido');
+}
+
+function mostrarNivel(nColapsado) {
+    let nVisivel = nColapsado.previousElementSibling
+    
+    let todosVisiveis = document.querySelectorAll('.nivel-visivel');
+    for(let i = 0; i < todosVisiveis.length; i++) {
+        todosVisiveis[i].classList.add('escondido');
+    }
+
+    let todosColapsados = document.querySelectorAll('.nivel-colapsado');
+    for(let i = 0; i < todosColapsados.length; i++) {
+        todosColapsados[i].classList.remove('escondido');
+    }
+
+    nColapsado.classList.add('escondido');
+    nVisivel.classList.remove('escondido');
+}
+
+function checarNumCaracteres(array, numMinimo, alerta) {
+    for (let i = 0; i < array.length; i++) {
+        let string = array[i].value
+        if ( string.length < numMinimo) {
+            alert(alerta);  
+            break;
+        } 
+    }
+    
+}
+function checarValorNumero(array, alerta) {
+    let arrayValores = [];
+    for (i = 0; i < array.length; i++) {
+        let porcentagem = parseFloat(array[i].value)
+        arrayValores.push(String(porcentagem))
+        if(porcentagem < 0 || porcentagem > 100) {
+            alert(alerta);
+            break;
+        } else {
+
+        }
+    }
+    if (arrayValores.includes('0') == false && array.length != arrayValores.length) {
+        alert(alerta);
+    } else {
+
+    }
+   
+    
+}
+function checarURL(array, alerta) {
+    for(i = 0; i < array.length; i++) {
+        let urlComparaçao = '';
+        let url = array[i].value;
+        for (j = 0; j < 8; j++) {
+            urlComparaçao += url[j];
+        }
+        if (urlComparaçao != 'https://') {
+            alert(alerta);
+            break;
+        }
+    }
+}
+
+
+function checarNiveis(){
+    let alertaTitulo = "O título deve conter no mínimo 10 caracteres, por favor, preencha as informações pedidas corretamente";
+    let alertaPorcentagem = 'A porcentagem deve ser um número positivo de 0 a 100 e pelo menos um nível deve ter a porcentagem de 0%, por favor, preencha as informações pedidas corretamente';
+    let alertaURL = "A imagem deve estar em formato de URL, por favor, preencha as informações pedidas corretamente"
+    let alertaDescricao = "A descrição dos níveis deve ter no mínimo 30 caracteres, por favor, preencha as informações pedidas corretamente"
+    
+    let todosTitulosNiveis = document.querySelectorAll('.titulo-nivel');
+    let todasPorcentagensNiveis = document.querySelectorAll('.acerto-minimo');
+    let todasURLSNiveis = document.querySelectorAll('.url-imagem-nivel');
+    let todasDescricoes = document.querySelectorAll('.descricao-nivel');
+
+    checarNumCaracteres(todosTitulosNiveis, 10, alertaTitulo);
+    checarValorNumero(todasPorcentagensNiveis, alertaPorcentagem);
+    checarURL(todasURLSNiveis, alertaURL);
+    checarNumCaracteres(todasDescricoes, 30, alertaDescricao)
 }
 
 
