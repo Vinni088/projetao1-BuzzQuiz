@@ -1,6 +1,6 @@
 axios.defaults.headers.common['Authorization'] = 'EAfOvX9dRBbHsFCJzme9yXNE'; 
 
-let quizzes = [];
+/* let quizzes = [];
 
 function analise_quizzes(resposta) {
     quizzes = resposta.data;
@@ -8,7 +8,7 @@ function analise_quizzes(resposta) {
 function coletar_quizzes() {
     const promisse_quizzes = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes');
     promisse_quizzes.then(analise_quizzes);
-}
+}*/
 coletar_quizzes();
 function comparador() {
     let meio = 0.5;
@@ -17,7 +17,7 @@ function comparador() {
 let quizz_execução;
 let numero_acertos = 0;
 let numero_questões = 0;
-
+let id_quizz = 0;
 function Marcar_resposta(endereço, identificador) {
     endereço.classList.add('marcado');
     if (identificador == true) {
@@ -63,5 +63,11 @@ function Jogar_quizz(identificador) {
                 <span>${respostas[j].text}</span>
             </div>`;
         }
-    }   
+    }
+    corpo.innerHTML += `
+    <div class="final-quiz">
+      <button onclick="Jogar_quizz(identificador)" >Reiniciar quizz</button>
+      <span class="volta_home" onclick="tela_inicial()" >Voltar para Home</span>
+    </div>
+    `
 }

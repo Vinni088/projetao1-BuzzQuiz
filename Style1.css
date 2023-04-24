@@ -177,9 +177,15 @@
     width: 30px;
     height: 30px;
 }
+.volta_home {
+    width: 350px;
+    height: 20px;
+    border-radius: 10px;
+}
 .Quiz_individual:hover,
 .botao_criar_quizz:hover, 
-.voltar-a-tela1:hover {
+.voltar-a-tela1:hover,
+.volta_home:hover{
     cursor:pointer;
 }
 

@@ -64,7 +64,6 @@ body{
 
 figcaption{
    position: absolute;
-   
 }
 
 .pergunta-quiz{
@@ -99,6 +98,8 @@ figcaption{
 }
 
 .opcoes-quiz{
+    height: 759px;
+    width: 676px;
     display: flex;
     flex-wrap: wrap;
     gap: 25px;

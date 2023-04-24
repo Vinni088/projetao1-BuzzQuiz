@@ -8,7 +8,7 @@ function povoar_quizzes() {
     const localização = document.querySelector(".todos_os_quizzes");
     for (let i = 0; i < quizzes.length; i++) {
         let div_adicional = `
-        <div onclick="Play_quizz(${quizzes[i].id})" class="Quiz_individual">
+        <div onclick="Jogar_quizz(${quizzes[i].id})" class="Quiz_individual">
             <img  class="Img_quiz" src=${quizzes[i].image} alt="">
             <div class="Titulo_quiz_individual">${quizzes[i].title}</div>
             <div class="cover"></div>
