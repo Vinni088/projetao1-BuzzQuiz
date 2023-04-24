@@ -1,4 +1,5 @@
 /* Tela criação quizz */
+
 /* Criar quizz: Infos Básicas */
 .container-inputs {
     background-color: #FFFFFF;
@@ -120,6 +121,81 @@
     cursor: pointer;
 }
 
+/* Criar quizz: Níveis */
+.container-niveis{
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center; 
+}
+.box-nivel {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: center;
+}
+.nivel-visivel {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    
+    width: 600px; 
+    padding: 17px 15px;
+}
+.nivel-colapsado {
+    width: 600px;
+    height: 74px;
+
+    margin: 12px 0;
+    padding: 0 17px;
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nivel-colapsado > p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+.nivel-colapsado > ion-icon {
+    height: 23px;
+    width: 26px;
+
+    color: #000000;
+}
+.nivel-colapsado > ion-icon:hover {
+    cursor: pointer;
+}
+.descricao-nivel {
+    height: 177px;  
+    width: 100%;
+
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    margin: 7px 0;
+    padding: 7px 14px;
+
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+
+    color: #BABABA;
+}
 
 /* Configs Gerais */
 * {
@@ -213,10 +289,12 @@ body {
     .pergunta-colapsada {
         width: 100%;
     }
-}
-/* Informação inválida */
-.info-invalida {
-    border: 2px solid red;
+    .nivel-visivel {
+        width: 100%;
+    }
+    .nivel-colapsado {
+        width: 100%;
+    }
 }
 
 /* Classe Display: none */
