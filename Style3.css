@@ -299,7 +299,9 @@ body {
     .nivel-colapsado {
         width: 100%;
     }
-    
+    .cabecalho{
+        display: none;
+    }
 }
 
 /* Classe Display: none */
