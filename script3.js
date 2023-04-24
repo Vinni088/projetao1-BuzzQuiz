@@ -1,4 +1,75 @@
 //criar quizz: infos básicas
+const objetoQuizz = {
+	title: "",
+	image: "",
+	questions: [
+		{
+			title: "",
+			color: "",
+			answers: [
+				{
+					text: "",
+					image: "",
+					isCorrectAnswer: true
+				},
+				{
+					text: "",
+					image: "",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "",
+			color: "",
+			answers: [
+				{
+					text: "",
+					image: "",
+					isCorrectAnswer: true
+				},
+				{
+					text: "",
+					image: "",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "",
+			color: "",
+			answers: [
+				{
+					text: "",
+					image: "",
+					isCorrectAnswer: true
+				},
+				{
+					text: "",
+					image: "",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: "",
+			image: "",
+			text: "",
+			minValue: 0
+		},
+		{
+			title: "",
+			image: "",
+			text: "",
+			minValue: 0
+		}
+	]
+}
+
+
+
 let tituloQuizz = '';
 let imagemQuizz = '';
 let numPerguntas = 0;
@@ -44,8 +115,8 @@ function checarInfo() {
     } else if (numNiveis < 2 || numNiveis == null || isNaN(numNiveis) == true) {
         alert('Por favor, preencha as informações pedidas corretamente');
     } else {
-        mock.title = tituloQuizz
-        mock.image = imagemQuizz
+        objetoQuizz.title = tituloQuizz
+        objetoQuizz.image = imagemQuizz
         definirPerguntas();
     }   
 }
@@ -89,11 +160,11 @@ function definirPerguntas() {
                     </div>
                     <div class="box-inputs">
                         <input class="pergunta${i+1} resposta-incorreta2" type="text" placeholder="Resposta incorreta 2">
-                        <input class="pergunta${i+1} url-img-resposta resp-incorreta2" type="text" placeholder="URL da imagem 2">
+                        <input class="pergunta${i+1} url-img-resp-incorreta2" type="text" placeholder="URL da imagem 2">
                     </div>
                     <div class="box-inputs">
                         <input class="pergunta${i+1} resposta-incorreta3" type="text" placeholder="Resposta incorreta 3">
-                        <input class="pergunta${i+1} url-img-resposta resp-incorreta3" type="text" placeholder="URL da imagem 3">
+                        <input class="pergunta${i+1} url-img-resp-incorreta3" type="text" placeholder="URL da imagem 3">
                     </div>
                 </div>
                 <div class="pergunta${i+1} pergunta-colapsada">
@@ -137,29 +208,26 @@ function checarPerguntas() {
     respostasCorretas = document.querySelectorAll('.resp-correta');
     respostasErradas1 = document.querySelectorAll('.resp-incorreta1');
 
-    let perguntasInseridas = [];
-    let coresInseridas = [];
-    let imagensRCInseridas = [];
-    let imagensREInseridas = [];
-    let respCorretasInseridas = [];
-    let respErradasInseridas = [];
+    let checagemPerguntas = true
 
     for(let i = 0; i < todasPerguntas.length; i++) {
-       let pergunta = todasPerguntas[i].value;
+        let pergunta = todasPerguntas[i].value;
         if (pergunta.length < 20) {
             alert('As perguntas devem ter 20 caracteres no mínimo, por favor preencha as informações pedidas corretamente');
+            checagemPerguntas = false;
             break;
         } else {
-           perguntasInseridas.push(true);
+           objetoQuizz.questions[i].title = pergunta;
         }
     }
     for(let i = 0; i < todasCores.length; i++) {
         let corfundo = todasCores[i].value;
         if (corfundo.length != 7 || corfundo[0] !== '#') {
             alert('As cores de fundo devem estar em formato hexadecimal, por favor preencha as informações pedidas corretamente');
+            checagemPerguntas = false;
             break;
         } else {
-            coresInseridas.push(true);
+            objetoQuizz.questions[i].color = corfundo;
         }
     }
     for(let i = 0; i < todasImagensRCorreta.length; i++) {
@@ -170,9 +238,11 @@ function checarPerguntas() {
         }
         if(httpsCheck !== 'https://') {
             alert('As imagens devem estar em formato de URL, por favor preencha as informações pedidas corretamente');
+            checagemPerguntas = false;
             break; 
         } else {
-            imagensRCInseridas.push(true);
+            objetoQuizz.questions[i].answers[0].image = urlImg;
+            
         }
     }
     for(let i = 0; i < todasImagensRErrada1.length; i++) {
@@ -183,38 +253,102 @@ function checarPerguntas() {
         }
         if(httpsCheck !== 'https://') {
             alert('As imagens devem estar em formato de URL, por favor preencha as informações pedidas corretamente');
+            checagemPerguntas = false;
             break; 
         } else {
-            imagensREInseridas.push(true);
+            objetoQuizz.questions[i].answers[1].image = urlImg;
         }
     }
     for(let i = 0; i < respostasCorretas.length; i++) {
         let respCorreta = respostasCorretas[i].value;
         if (respCorreta == null || respCorreta == undefined) {
             alert('As respostas corretas não podem estar em branco, por favor preencha as informações pedidas corretamente');
+            checagemPerguntas = false;
             break;
         } else {
-            respCorretasInseridas.push(true);
+            objetoQuizz.questions[i].answers[0].text = respCorreta;
+            objetoQuizz.questions[i].answers[0].isCorrectAnswer = true;
         }
     }
     for(let i = 0; i < respostasErradas1.length; i++) {
         let respErrada1 = respostasErradas1[i].value;
         if(respErrada1 == null || respErrada1 == undefined) {
             alert('É necessário ter ao menos uma resposta incorreta, por favor preencha as informações pedidas corretamente');
+            checagemPerguntas = false;
             break; 
         } else {
-            respErradasInseridas.push(true);
+            objetoQuizz.questions[i].answers[1].text = respErrada1;
+            objetoQuizz.questions[i].answers[1].isCorrectAnswer = false;
         }
     }
 
-    let perguntasForamInseridas = todasPerguntas.length == perguntasInseridas.length;
-    let coresForamInseridas = todasCores.length == coresInseridas.length;
-    let imagensRCForamInseridas = todasImagensRCorreta.length == imagensRCInseridas.length;
-    let imagensREForamInseridas = todasImagensRErrada1.length == imagensREInseridas.length;
-    let respCorretasForamInseridas = respostasCorretas.length == respCorretasInseridas.length;
-    let respErradasForamInseridas = respostasErradas1.length == respErradasInseridas.length;
+    console.log(checagemPerguntas);
+    puxarRespostasIncorretas(checagemPerguntas);
+    console.log(checagemPerguntas);
+    
+}
 
-    if(perguntasForamInseridas == true && coresForamInseridas == true && imagensRCForamInseridas == true && imagensREForamInseridas == true && respCorretasForamInseridas == true && respErradasForamInseridas == true) {
+function puxarRespostasIncorretas(checagemPerguntas) {
+    let respostasErradas2 = document.querySelectorAll('.resposta-incorreta2');
+    let imagensRErradas2 = document.querySelectorAll('.url-img-resp-incorreta2');
+    
+    let respostasErradas3 = document.querySelectorAll('.resposta-incorreta3');
+    let imagensRErradas3 = document.querySelectorAll('.url-img-resp-incorreta3')
+    console.log(imagensRErradas3, 'abobrinha');
+    
+    for (i = 0; i < respostasErradas2.length; i++) {
+        let respIncorreta = respostasErradas2[i].value;
+        let imgRErrada = imagensRErradas2[i].value;
+        
+        let url = '';
+        
+        for (let j = 0; j < 8; j++) {
+            url += imgRErrada[j];
+        }
+        if (respIncorreta != null && url != 'https://') {
+            alert('Por favor, todas as imagens devem estar em formato URL');
+            checagemPerguntas = false;
+            break;   
+        } else if (respIncorreta == null && url != null) {
+            alert('Por favor, garanta que todas as respostas foram preenchidas apropriadamente.')
+            checagemPerguntas = false;
+            break;
+        } else {
+            objetoQuizz.questions[i].answers[2].text = respIncorreta;
+            objetoQuizz.questions[i].answers[2].isCorrectAnswer = false;
+            objetoQuizz.questions[i].answers[2].image = imgRErrada;
+        }
+    }
+    imagensRErradas3
+    for (i = 0; i < respostasErradas3.length; i++) {
+        let respIncorreta = respostasErradas3[i].value;
+        let imgRErrada = imagensRErradas3[i].value;
+        
+        let url = '';
+        
+        for (let j = 0; j < 8; j++) {
+            url += imgRErrada[j];
+        }   
+            console.log(respIncorreta);
+            console.log(url);
+        if (respIncorreta != null && url != 'https://') {
+            alert('Por favor, todas as imagens devem estar em formato URL');
+            checagemPerguntas = false;
+            break; 
+
+        } else if(respIncorreta == null && url != null) {
+            alert('Por favor, garanta que todas as respostas foram preenchidas apropriadamente.')
+            checagemPerguntas = false;
+            break;
+        } else {
+            objetoQuizz.questions[i].answers[3].text = respIncorreta;
+            objetoQuizz.questions[i].answers[3].isCorrectAnswer = false;
+            objetoQuizz.questions[i].answers[3].image = imgRErrada;  
+        }
+    }
+    
+
+    if(checagemPerguntas == true) {
         definirNiveis();
     }
 }
@@ -279,7 +413,8 @@ function checarNumCaracteres(array, numMinimo, alerta) {
     for (let i = 0; i < array.length; i++) {
         let string = array[i].value
         if ( string.length < numMinimo) {
-            alert(alerta);  
+            alert(alerta); 
+            passouOsTestes = false;
             break;
         } 
     }
@@ -292,16 +427,14 @@ function checarValorNumero(array, alerta) {
         arrayValores.push(String(porcentagem))
         if(porcentagem < 0 || porcentagem > 100) {
             alert(alerta);
+            passouOsTestes = false;
             break;
-        } else {
-
-        }
+        } 
     }
     if (arrayValores.includes('0') == false && array.length != arrayValores.length) {
+        passouOsTestes = false;
         alert(alerta);
-    } else {
-
-    }
+    } 
    
     
 }
@@ -314,12 +447,37 @@ function checarURL(array, alerta) {
         }
         if (urlComparaçao != 'https://') {
             alert(alerta);
+            passouOsTestes = false;
             break;
         }
     }
 }
+function enviarTituloNivelParaObjeto(arrayTitulos) {
+    for(i = 0; i < arrayTitulos.length; i++) {
+        let titulo = arrayTitulos[i].value;
+        objetoQuizz.levels[i].title = titulo;
+    }
+}
+function enviarImagemNivelParaObjeto(arrayImagens) {
+    for(i = 0; i < arrayImagens.length; i++) {
+        let imagem = arrayImagens[i].value;
+        objetoQuizz.levels[i].image = imagem;
+    }
+}
+function enviarTextoNivelParaObjeto(arrayTextos) {
+    for(i = 0; i < arrayTextos.length; i++) {
+        let texto = arrayTextos[i].value;
+        objetoQuizz.levels[i].text = texto;
+    }
+}
+function enviarPorcentagemNivelParaObjeto(arrayPorcentagem) {
+    for(i = 0; i < arrayPorcentagem.length; i++) {
+        let porcentagem = parsefloat(arrayPorcentagem[i].value);
+        objetoQuizz.levels[i].minValue = porcentagem;
+    }
+}
 
-
+let passouOsTestes = true
 function checarNiveis(){
     let alertaTitulo = "O título deve conter no mínimo 10 caracteres, por favor, preencha as informações pedidas corretamente";
     let alertaPorcentagem = 'A porcentagem deve ser um número positivo de 0 a 100 e pelo menos um nível deve ter a porcentagem de 0%, por favor, preencha as informações pedidas corretamente';
@@ -335,43 +493,16 @@ function checarNiveis(){
     checarValorNumero(todasPorcentagensNiveis, alertaPorcentagem);
     checarURL(todasURLSNiveis, alertaURL);
     checarNumCaracteres(todasDescricoes, 30, alertaDescricao)
+
+    if (passouOsTestes == true) {
+        enviarTituloNivelParaObjeto(todosTitulosNiveis);
+        enviarImagemNivelParaObjeto(todasURLSNiveis);
+        enviarTextoNivelParaObjeto(todasDescricoes);
+        enviarPorcentagemNivelParaObjeto(todasPorcentagensNiveis);
+        console.log(objetoQuizz);
+        //funçao fim do quizz
+    }
 }
 
 
 
-const mock = {
-    title: '',
-	image: '',
-    questions: [
-        {
-            title: "",
-            color:"",
-            answers: [
-                {
-                    text:"",
-                    image: "",
-                    isCorrectAnswer: true
-                },
-                {
-                    text:"",
-                    image: "",
-                    isCorrectAnswer: false
-                }
-            ]
-        }
-    ],
-    levels:[
-        {
-			title: "",
-			image: "",
-			text: "",
-			minValue: 0
-		},
-		{
-			title: "",
-			image: "",
-			text: "",
-			minValue: 50
-		}
-    ]
-}
