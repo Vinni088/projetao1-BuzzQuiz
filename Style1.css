@@ -132,6 +132,7 @@
     height: 181px;
     border-radius: 5px;
     position: relative;
+    overflow: hidden;
 }
 .Img_quiz {
     position: absolute;
@@ -167,6 +168,8 @@
     display: flex;
     align-items: center;
     color: #FFFFFF;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 .voltar-a-tela1 {
     position: fixed;
