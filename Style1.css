@@ -2,7 +2,10 @@
     box-sizing: border-box;
 }
 .Tela1 {
-    background-color: #FAFAFA;
+    background-color: #e5e5e5;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
 }
 .cabecalho_tela1 {
     position: fixed;
@@ -12,31 +15,26 @@
 
     width: 100%;
     height: 69px;
-
     background: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Texto_Cabecalho_tela1 {
-    width: 176px;
-    height: 43px;
-
+.Texto_Cabecalho_tela1 { 
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
     font-size: 37px;
-    line-height: 43px;
-
     color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .corpo-inteiro {
     padding-top: 100px;
     padding-left: 194px;
     padding-right: 194px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +59,6 @@
 .Sem_quizzes {
     width: 250px;
     height: 107px;
-   
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
@@ -132,6 +129,7 @@
     height: 181px;
     border-radius: 5px;
     position: relative;
+    overflow: hidden;
 }
 .Img_quiz {
     position: absolute;
@@ -151,10 +149,11 @@
     z-index: 2;
     border-radius: 5px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+
+    
 }
 .Titulo_quiz_individual {
     position: absolute;
-    width: 301px;
     height: 54px;
     left: 18px;
     bottom: 7px;
@@ -163,11 +162,11 @@
     font-style: normal;
     font-weight: 400;
     font-size: 19px;
-    line-height: 22px;
     display: flex;
     align-items: center;
-    
     color: #FFFFFF;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 .voltar-a-tela1 {
     position: fixed;
@@ -182,4 +181,43 @@
 .botao_criar_quizz:hover, 
 .voltar-a-tela1:hover {
     cursor:pointer;
+}
+
+@media (max-width: 376px) {
+
+.cabecalho_tela1{
+    width: 100%;
+    height: 69px;
+    display: flex;
+    position: fixed;
+}
+
+    .seus_quizzes{
+    height: 181px;
+    width: 340px;
+    border-radius: 5px;
+    margin-top: 15px;
+    }
+
+    h1{
+    margin-left: 20px;
+    }
+
+    .corpo-inteiro{
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        
+    }
+
+    .todos_os_quizzes{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 60px;
+    }
+    .voltar-a-tela1{
+        display: none;
+    }
+
 }

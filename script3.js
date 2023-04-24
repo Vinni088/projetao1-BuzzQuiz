@@ -124,7 +124,7 @@ function checarInfo() {
 
 //criar quizz: perguntas
 const perguntasCorpo = [
-    `<div class="cabecalho">BuzzQuizz</div>
+    `
     <div class="instrucoes-criacao">Crie suas Perguntas</div> 
     <div class="container-perguntas"></div>
     <button onclick="checarPerguntas()" class="botao-avancar"><p>Prosseguir pra criar níveis</p></button>`
