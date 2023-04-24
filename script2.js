@@ -1,6 +1,6 @@
 axios.defaults.headers.common['Authorization'] = 'EAfOvX9dRBbHsFCJzme9yXNE'; 
 
-let quizzes = [];
+/* let quizzes = [];
 
 function analise_quizzes(resposta) {
     quizzes = resposta.data;
@@ -8,23 +8,31 @@ function analise_quizzes(resposta) {
 function coletar_quizzes() {
     const promisse_quizzes = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes');
     promisse_quizzes.then(analise_quizzes);
-}
+}*/
 coletar_quizzes();
 function comparador() {
     let meio = 0.5;
     return Math.random() - meio;
 }
 let quizz_execução;
+let numero_acertos = 0;
+let numero_questões = 0;
+let id_quizz = 0;
+function Marcar_resposta(endereço, identificador) {
+    endereço.classList.add('marcado');
+    if (identificador == true) {
+        numero_acertos += 1;
+        alert("acertou");
+    }
+}
 function Jogar_quizz(identificador) {
     for (let i = 0; i < quizzes.length; i++) {
         if (identificador === quizzes[i].id) {
             quizz_execução = quizzes[i];
         }
     }
-
     let corpo = document.querySelector('.corpo-inteiro');
     corpo.innerHTML = "";
-
     corpo.innerHTML += `
     <div data-test="banner" class="titulo-quiz"> 
         <img src=${quizz_execução.image}> 
@@ -34,33 +42,32 @@ function Jogar_quizz(identificador) {
     for(let i = 0; i <quizz_execução.questions.length; i++) {
         let respostas = quizz_execução.questions[i].answers;
         respostas.sort(comparador);
-        corpo.innerHTML +=`
+        corpo.innerHTML +=
+        `
         <div data-test="question" class="pergunta-quiz">
             <div data-test="question-title" class="titulo-pergunta">
                 ${quizz_execução.questions[i].title}
             </div>
 
-        <div class="opcoes-quiz">
-          <div data-test="answer" class="opcao-quiz">
-            <img src="${respostas[0].image}" >
-            <span data-test="answer-text">${respostas[0].text}</span>
-          </div>
-
-          <div data-test="answer" class="opcao-quiz">
-            <img src="${respostas[1].image}" >
-            <span data-test="answer-text">${respostas[1].text}</span>
-          </div>
-
-          <div data-test="answer" class="opcao-quiz">
-            <img src="${respostas[2].image}" >
-            <span data-test="answer-text">${respostas[2].text}</span>
-          </div>
-
-          <div data-test="answer" class="opcao-quiz">
-            <img src="${respostas[3].image}" >
-            <span data-test="answer-text">${respostas[3].text}</span>
-          </div>
+            <div class="opcoes-quiz pergunta${i}">
+                Placeholder
+            </div>
         </div>
-      </div>`
-    }   
+        `;
+        let corpo_quizz = document.querySelector(`.pergunta${i}`) 
+        corpo_quizz.innerHTML = "";
+        for (let j = 0; j < respostas.length; j++) {
+            corpo_quizz.innerHTML += `
+            <div class="opcao-quiz" onclick="Marcar_resposta(this, ${respostas[j].isCorrectAnswer})">
+                <img src="${respostas[j].image}" >
+                <span>${respostas[j].text}</span>
+            </div>`;
+        }
+    }
+    corpo.innerHTML += `
+    <div class="final-quiz">
+      <button onclick="Jogar_quizz(identificador)" >Reiniciar quizz</button>
+      <span class="volta_home" onclick="tela_inicial()" >Voltar para Home</span>
+    </div>
+    `
 }

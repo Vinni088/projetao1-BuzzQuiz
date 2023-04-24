@@ -64,7 +64,6 @@ body{
 
 figcaption{
    position: absolute;
-   
 }
 
 .pergunta-quiz{
@@ -85,6 +84,7 @@ figcaption{
 .titulo-pergunta{
     width: 688px;
     height: 137px;
+    padding: 5px;
     background-color:pink;
     justify-content: center;
     align-items: center;
@@ -92,9 +92,14 @@ figcaption{
     color: #FFFFFF;
     font-size: 23px;
     font-weight: 700;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .opcoes-quiz{
+    height: 759px;
+    width: 676px;
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
@@ -106,6 +111,9 @@ figcaption{
 .opcao-quiz{
     display: flex;
     flex-direction: column;
+    height: 220px;
+    width: 335px;
+    overflow: hidden;
 }
 
 .opcao-quiz img{
@@ -116,7 +124,6 @@ figcaption{
 .opcao-quiz span{
     font-size: 20px;
     font-weight: 700;
-    
 }
 
 .resultado-quiz{
